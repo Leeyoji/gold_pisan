@@ -122,15 +122,15 @@ export default function Dashboard() {
             <CardTitle>Product Stocks</CardTitle>
           </CardHeader>
           <CardContent>
-        <Table>
-  <TableHeader className="bg-cyan-950 dark:bg-white">
+        <Table className="rounded-sm">
+  <TableHeader className="bg-cyan-950 dark:bg-white p-2">
     <TableRow>
-    <TableHead className="text-xl font-bold text-white dark:text-black" >Product</TableHead>
-      <TableHead className="text-xl font-bold text-white dark:text-black" >In-Stock</TableHead>
-      <TableHead className="text-xl font-bold text-white dark:text-black" >Out-of-Stock</TableHead>
+    <TableHead className="text-lg font-bold text-white dark:text-black" >Product</TableHead>
+      <TableHead className="text-lg font-bold text-white dark:text-black" >In-Stock</TableHead>
+      <TableHead className="text-lg font-bold text-white dark:text-black" >Out-of-Stock</TableHead>
     </TableRow>
   </TableHeader>
-  <TableBody className="text-xl tracking-wider font-poppins">
+  <TableBody className="text-lg tracking-wider font-poppins">
     {/* Iterate through both In-stock and Out-of-stock products */}
     {products.map((product) => {
       const inStockSizes = Object.entries(product.stocks).filter(
@@ -143,19 +143,19 @@ export default function Dashboard() {
       return (
         <TableRow key={product.name}>
           <TableCell>
-            {product.name}
+           <p className="font-bold"> {product.name}</p> 
           </TableCell>
           {/* In-Stock Column */}
           <TableCell className="border-b">
             {inStockSizes.length > 0 ? (
               inStockSizes.map(([size, stock]) => (
                 <div key={`${product.name}-${size}`} className="gap-1">
-                  <p className="mt-1">{size}: <span className="text-green-600 font-semibold"> {stock} </span>in stock </p>
+                  <p className="mt-1">{size}: <span className="text-green-600 font-semibold"> {stock} </span> in stock </p>
                 </div>
               ))
             ) : (
               <div className="flex gap-2">
-                <p>No in-stock sizes</p><CircleAlert className="text-red-600 mt-1"/>
+                <p>No in-stock sizes</p><CircleAlert className="text-red-600"/>
               </div>
             )}
           </TableCell>
@@ -170,7 +170,7 @@ export default function Dashboard() {
               ))
             ) : (
               <div className="flex gap-2"> 
-                <p>No out-of-stock sizes </p> <Check className="text-green-600 mt-1"/>
+                <p>No out-of-stock sizes </p> <Check className="text-green-600"/>
               </div>
             )}
           </TableCell>

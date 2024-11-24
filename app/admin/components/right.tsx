@@ -9,6 +9,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Separator } from "@/components/ui/separator";
 import { LogoutLink } from "@kinde-oss/kinde-auth-nextjs/components";
 
 export default function RightMenu () {
